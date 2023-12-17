@@ -1,0 +1,37 @@
+<div style="width: 100%;height: 91vh;background-image: url(https://kinneygroup.com/wp-content/uploads/2019/10/fw-bg-gradient-1024x576.png);background-size: cover;background-repeat: no-repeat;" class="d-flex justify-content-center align-items-center">
+    <div style="width: 900px;" class="shadow p-5 row rounded bg-light align-items-center">
+        <div class="col-lg-8">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/2026891/screenshots/5591175/media/9cdd0b4585a876eb641dd3211207ed6b.png?resize=400x0" alt="login img">
+        </div>
+        <div class="col-lg-4">
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+                <h1 style="overflow: hidden;" class="fw-bolder mb-5">Login Form</h1>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" [(ngModel)]="email" email required #useremailinput="ngModel">
+                    <label for="floatingInput">E-mail Address</label>
+                </div>
+                 
+                <!-- invalid email -->
+                <div *ngIf="useremailinput.invalid && useremailinput.touched" class="mb-3 text-danger fw-bolder">
+                    * Invalid Email
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="password" name="password" [(ngModel)]="password" required pattern="[a-zA-Z0-9]*" minlength="4" #userpassword="ngModel">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                 <!-- invalid password -->
+                 <div *ngIf="userpassword.invalid && userpassword.touched" class="mb-3 text-danger fw-bolder">
+                    * Invalid Password
+                </div>
+
+                <div class="d-grid">
+                    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-success">Login</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+</div>
